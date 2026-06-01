@@ -1,0 +1,118 @@
+{
+  "n": 1,
+  "quarter": "q1",
+  "title": "Orientation, Calibration & the Mechanism Mindset",
+  "estimate": "~4 hours",
+  "goal": "Set up your whole toolchain, and turn your A1 Mini + PLA into a measured instrument. By the end of the week you will have one number — your running-fit clearance — that becomes the boundary condition for every revolute joint you print for the rest of the year.",
+  "bigIdea": "Treat mechanism design the way a good lab course treats circuits: every idea must show up in something you can hold, turn, and watch fail or succeed on your bench. This week you don't study a mechanism — you calibrate the bench that will let you trust the next 51.",
+  "outcomes": [
+    "Toolchain installed: OrcaSlicer, Onshape Free (with Primer done), and Linkage.",
+    "A characterized running-fit clearance for your printer + filament, written in your journal.",
+    "The standing colour convention adopted: ground = gray, crank = red, coupler = blue, rocker = green, output = yellow.",
+    "Vocabulary for kinematic pairs (R, P, C, G, H) and a feel for mobility."
+  ],
+  "playlist": [
+    {
+      "id": "read-norton-1",
+      "type": "pdf",
+      "title": "Norton — Ch. 1: Introduction",
+      "detail": "The mechanism-design mindset, a tour of kinematic applications, and the design process. Sets up the vocabulary you'll formalize in Ch. 2.",
+      "file": "[McGraw-Hill series in mechanical engineering] Robert L. Norton - Design of machinery _ an introduction to the synthesis and analysis of mechanisms and machines (2020)-28-56.pdf",
+      "pages": "pp. 28–56",
+      "est": "30 min",
+      "core": true
+    },
+    {
+      "id": "read-norton-2",
+      "type": "pdf",
+      "title": "Norton — Ch. 2: Kinematics Fundamentals",
+      "detail": "The building blocks: kinematic pairs / joints (revolute R, prismatic P, cylindric C, gear G, helical H), links, kinematic chains, and degrees of freedom. This is your core vocabulary for the whole year. Skim the compliant-mechanisms section — you'll return to it in Week 35.",
+      "file": "[McGraw-Hill series in mechanical engineering] Robert L. Norton - Design of machinery _ an introduction to the synthesis and analysis of mechanisms and machines (2020)-57-124.pdf",
+      "pages": "pp. 57–124",
+      "est": "45 min",
+      "core": true
+    },
+    {
+      "id": "read-cmm-principles",
+      "type": "reading",
+      "title": "Cabaret Mechanical Movement — \"Some Principles\"",
+      "detail": "Onn & Alexander, 2nd rev. ed. (2014). The artist's-eye complement to Norton: how makers think about movement before they think about math. Sets the CMT (Cabaret Mechanical Theatre) aesthetic you're building toward.",
+      "est": "20 min",
+      "core": true
+    },
+    {
+      "id": "browse-507",
+      "type": "link",
+      "title": "Browse 507 Mechanical Movements",
+      "detail": "Animated companion to H. T. Brown's 1868 classic. Don't study — just scroll and let your eye get used to how planar mechanisms move. Bookmark three that intrigue you and note them in your journal.",
+      "url": "https://507movements.com",
+      "est": "15 min"
+    },
+    {
+      "id": "watch-thang",
+      "type": "video",
+      "title": "Watch one thang010146 mechanism animation",
+      "detail": "Nguyen Duc Thang's channel is a visual mechanism dictionary (thousands of clipped animations). Pick any four-bar or crank clip. You'll return here almost every week to find variants of whatever you're building.",
+      "url": "https://www.youtube.com/user/thang010146",
+      "est": "10 min"
+    },
+    {
+      "id": "tool-orcaslicer",
+      "type": "tool",
+      "title": "Install OrcaSlicer and add your A1 Mini",
+      "detail": "OrcaSlicer is the open-source Bambu Studio fork; it handles slicing and AMS Lite colour/material setup. Add the Bambu A1 Mini profile and your PLA filament. (Bambu Studio also works if you prefer first-party.)",
+      "url": "https://github.com/SoftFever/OrcaSlicer",
+      "est": "20 min",
+      "core": true
+    },
+    {
+      "id": "tool-onshape",
+      "type": "tool",
+      "title": "Sign up for Onshape Free + complete the Onshape Primer",
+      "detail": "Browser-based parametric CAD, your primary tool all year. Create the free account (note: all documents are public on the free tier) and work through the official \"Onshape Primer\" learning path so sketches, features, and variables feel natural before Week 2's assembly mates.",
+      "url": "https://www.onshape.com",
+      "est": "45 min",
+      "core": true
+    },
+    {
+      "id": "tool-linkage",
+      "type": "tool",
+      "title": "Install Linkage (David Rector)",
+      "detail": "Free 2D linkage simulator with coupler-curve tracing — your \"SPICE for mechanisms.\" Windows-only; if you're on macOS/Linux, note it for a VM later. Just install and open it this week.",
+      "url": "https://blog.rectorsquid.com/linkage-mechanism-designer-and-simulator",
+      "est": "10 min"
+    },
+    {
+      "id": "do-tolerance-gauge",
+      "type": "assignment",
+      "title": "Project — Print a clearance test (hole/peg, 0.1–0.6 mm) + a pivot",
+      "detail": "Model or grab a tolerance gauge: a row of pegs in a matching plate with clearances stepping 0.1 → 0.6 mm, plus one simple revolute pivot (a peg in a hole that should spin freely). Print it. Start from the rule of thumb: ~1× extrusion width of clearance for sliding fits, ~2× for free-running. The goal is to FIND, not assume, what your machine actually does.",
+      "est": "60 min",
+      "core": true
+    },
+    {
+      "id": "do-ams-cube",
+      "type": "assignment",
+      "title": "Project — Print a 4-colour AMS Lite test cube & adopt the colour convention",
+      "detail": "Run a small multi-colour print to characterize purge volumes for your filament set. Then commit to the standing colour convention for the whole year: ground = light gray, crank = red, coupler = blue, rocker/follower = green, output/character = yellow. From now on the colour tells you the kinematic role at a glance.",
+      "est": "30 min"
+    },
+    {
+      "id": "do-measure-clearance",
+      "type": "assignment",
+      "title": "Measure & record YOUR running-fit clearance number",
+      "detail": "With a digital caliper, find the smallest clearance on your test print that still spins freely without slop. Write that number in your journal — clearly labelled. This single value is the boundary condition for every revolute joint you design for the next 51 weeks. (Threshold check: if you can't hold ±0.1 mm on a 20 mm calibration cube, re-run the A1 Mini's full auto-calibration before Week 2.)",
+      "est": "20 min",
+      "core": true
+    },
+    {
+      "id": "do-notebook",
+      "type": "assignment",
+      "title": "Set up your learning journal",
+      "detail": "Use the Journal tab below (or a paper notebook you photograph into it). Record: your clearance number, your purge volumes, the three 507movements you bookmarked, and one sentence on what \"mechanism mindset\" means to you. You'll add to this every week.",
+      "est": "15 min"
+    }
+  ],
+  "checklistNote": "Tick items as you go. The session is marked complete when every item is checked — then Week 2 unlocks.",
+  "nextUp": "Week 2 — Mobility: Gruebler / Kutzbach. You'll print three DOF puzzles (a four-bar, a five-bar, and the parallelogram \"exception\") and see the mobility equation come alive in PLA."
+}

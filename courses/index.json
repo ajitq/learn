@@ -1,0 +1,11 @@
+{
+  "courses": [
+    {
+      "id": "mechanism-design",
+      "title": "Mechanism & Automaton Design",
+      "tagline": "Go from zero mechanism theory to a hand-cranked automaton in a year.",
+      "emoji": "⚙️",
+      "sessions": 52
+    }
+  ]
+}
