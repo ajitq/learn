@@ -2,6 +2,32 @@
 
 The app is a tiny Node + Express server with a SQLite database. No build step.
 
+## Quick deploy (one command)
+
+`deploy/setup.sh` does everything below — installs Node + nginx, clones the repo,
+sets up a systemd service, and (optionally) gets a TLS cert. On a fresh Ubuntu
+22.04/24.04 droplet, as root:
+
+```bash
+# the repo is PRIVATE, so authenticate the clone with a token (repo-scoped PAT):
+export REPO_URL="https://<GITHUB_PAT>@github.com/ajitq/learn.git"
+
+curl -fsSL "$REPO_URL/raw/main/deploy/setup.sh" -o setup.sh   # or scp it up / paste it
+sudo REPO_URL="$REPO_URL" BRANCH=main DOMAIN=learn.example.com EMAIL=you@example.com bash setup.sh
+```
+
+Notes:
+- **Private repo:** create a fine-grained PAT with *Contents: read* on `ajitq/learn`
+  and put it in `REPO_URL` as shown, or add a deploy key and use the SSH URL
+  `git@github.com:ajitq/learn.git`.
+- **Branch:** the app currently lives on `claude/laughing-bardeen-UFfEi`. Either merge
+  that into `main` first, or pass `BRANCH=claude/laughing-bardeen-UFfEi`.
+- **No domain yet?** Omit `DOMAIN`/`EMAIL`; the site serves over plain HTTP on the
+  droplet's IP. Add TLS later by re-running with `DOMAIN` + `EMAIL` set.
+- Re-running the script later pulls the latest branch and restarts the service.
+
+The manual steps below are the same thing, broken out, if you'd rather do it by hand.
+
 ## 1. Install Node (once)
 
 On Ubuntu 22.04/24.04:
