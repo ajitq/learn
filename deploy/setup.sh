@@ -86,6 +86,12 @@ systemctl enable --now learn
 systemctl restart learn
 
 # --- 5. nginx reverse proxy ------------------------------------------------
+# Set SKIP_NGINX=1 to leave nginx alone (e.g. when an existing reverse proxy /
+# TLS setup such as Cloudflare origin certs is already in place — configure the
+# learn.<domain> vhost by hand to match your other sites).
+if [[ -n "${SKIP_NGINX:-}" ]]; then
+  log "SKIP_NGINX set — leaving nginx untouched. App is on 127.0.0.1:$PORT."
+else
 log "Configuring nginx (server_name $DOMAIN)…"
 cat > /etc/nginx/sites-available/learn <<NGINX
 server {
@@ -114,6 +120,7 @@ if [[ -n "$EMAIL" && "$DOMAIN" != "_" ]]; then
   certbot --nginx -d "$DOMAIN" --non-interactive --agree-tos -m "$EMAIL" --redirect || \
     log "certbot failed (DNS not pointing here yet?) — site still works over HTTP."
 fi
+fi  # end of nginx / TLS block (skipped when SKIP_NGINX is set)
 
 log "Done. Service status:"
 systemctl --no-pager --lines=0 status learn || true
